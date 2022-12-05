@@ -10,7 +10,7 @@ public class Lab4_3 {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("Code Program: ");
-		String code = sc.nextLine().toUpperCase();
+		String code = sc.nextLine().toUpperCase().trim();
 		System.out.print("Semester No: ");
 		int sem = sc.nextInt();
 		System.out.print("Credit Hours Registred: ");
@@ -35,6 +35,9 @@ public class Lab4_3 {
 			case "MEOH":
 				program = "Master of Environmental and Occupational Health";
 				index = 3;
+			default:
+				System.out.println("Invalid input");
+				System.exit(0);
 		}
 		
 		try { 
