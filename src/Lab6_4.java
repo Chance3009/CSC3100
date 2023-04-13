@@ -3,7 +3,7 @@
 * Name: Chan Ci En
 * Program: Software Engineering
 * Lab 6
-* Question 3
+* Question 4
 */
 
 import java.util.Scanner;

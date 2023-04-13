@@ -1,11 +1,19 @@
+/**
+* Matric number: 215035
+* Name: Chan Ci En
+* Program: Software Engineering
+* Lab 7
+* Question 1
+*/
+
 import java.util.Scanner;
 
 public class Lab7_1 {
-	public static Scanner CONSOLE = new Scanner(System.in);
+	public static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
-		char hasNext = 'Y';
+		boolean hasNext = true;
 		do {
-			int response;
+			int choice;
 			int age = getAge();
 			double weight = getWeight();
 			double height = getHeight();
@@ -14,12 +22,12 @@ public class Lab7_1 {
 			double BMR;
 			
 			while (true) {
-				response = getChoice();	
-				if (response == 1) {
+				choice = getChoice();	
+				if (choice == 1) {
 					BMI = calcBMI(weight, height);
 					displayBMI(BMI, weight, height);
 					break;
-				} else if (response == 2) {
+				} else if (choice == 2) {
 					BMR = calcBMR(age, gender, weight, height);
 					displayBMR(BMR, age, gender);
 					break;
@@ -30,34 +38,35 @@ public class Lab7_1 {
 			}
 			
 			System.out.print("Do you want to continue? (Y|N): ");
-			hasNext = Character.toUpperCase(CONSOLE.next().charAt(0));
+			hasNext = Character.toUpperCase(sc.next().charAt(0)) == 'Y';
 			System.out.println("\n****************************************************\n");
-		} while (hasNext == 'Y');
+		} while (hasNext);
 	}
 	
 	public static int getAge() {	
 		System.out.print("Enter age: ");
-		return CONSOLE.nextInt();
+		return sc.nextInt();
 	}
 	
 	public static double getWeight() {
 		System.out.print("Enter weight (kg): ");
-		return CONSOLE.nextDouble();
+		return sc.nextDouble();
 	}
 
 	public static double getHeight() {
 		System.out.print("Enter height (cm): ");
-		return CONSOLE.nextDouble();
+		return sc.nextDouble();
+	}
+	
+
+	public static char getGender() {
+		System.out.print("Enter gender (F|M): ");
+		return Character.toUpperCase(sc.next().charAt(0));
 	}
 	
 	public static int getChoice() {
 		System.out.print("Enter choice (1-BMI | 2-BMR): ");
-		return CONSOLE.nextInt();
-	}
-	
-	public static char getGender() {
-		System.out.print("Enter gender (F|M): ");
-		return Character.toUpperCase(CONSOLE.next().charAt(0));
+		return sc.nextInt();
 	}
 	
 	public static double calcBMI(double weight, double height) {
@@ -68,9 +77,8 @@ public class Lab7_1 {
 	public static double calcBMR(double age, char gender, double weight, double height) {
 		if (gender == 'M') {
 			return (66 + (6.23 * weight) + (12.7 * height) - (6.8 * age));
-		} else {
-			return (655 + (9.6 * weight) + (1.8 * height) - ( 4.7 * age));
 		}
+		return (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age));
 	}
 	
 	public static void displayBMI(double BMI, double weight, double height) {
